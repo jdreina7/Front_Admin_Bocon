@@ -1,0 +1,216 @@
+<!--Registration Page Starts-->
+<section id="regestration">
+
+  <div class="overlayVideo">
+      <video autoplay muted loop id="myVideo" style="position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%;">
+          <source src="../../assets/video/bg.mp4" type="video/mp4">
+        </video>
+    </div>
+
+  <div class="container-fluid">
+    <div class="row full-height-vh m-0">
+      <div class="col-12 d-flex align-items-center justify-content-center">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body register-img">
+              <div class="row m-0">
+                <div class="col-lg-6 d-none d-lg-block py-2 px-3 text-center"  style="background-color: #fff !important;">
+                  <img
+                    src="../../assets/img/gallery/bg-register.png"
+                    alt=""
+                    style="display: block; margin: auto; width: 80%;"
+                  />
+                </div>
+                <div class="col-lg-6 col-md-12 pt-3 px-4 bg-white">
+                  <h4 class="card-title mb-2">Create Account</h4>
+                  <p class="card-text mb-3">
+                    Fill the below form to create a new account.
+                  </p>
+
+                  <form id="userRegistration" novalidate (ngSubmit)="registerUser(forma)" #forma="ngForm" >
+                    <div class="row">
+                        <input
+                        type="text"
+                        class="form-control mb-3"
+                        placeholder="Name"
+                        name="usr_name"
+                        [(ngModel)]="name"
+                        minlength="3"
+                        required
+                        #usrName="ngModel"
+                        />
+                        <div *ngIf="!!usrName.errors?.required && usrName.touched"
+                              class="myAlerts">
+                          Su nombre es Obligatorio
+                        </div>
+                        <div *ngIf="!!usrName.errors?.minlength"
+                              class="myAlerts">
+                          Mínimo {{ usrName?.errors.minlength.requiredLength }} caracteres
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <input
+                        type="text"
+                        class="form-control mb-3"
+                        placeholder="Last Name"
+                        name="usr_lastname"
+                        [(ngModel)]="last_name"
+                        minlength="3"
+                        required
+                        #usrLastName="ngModel"
+                        />
+                        <div *ngIf="!!usrLastName.errors?.required && usrLastName.touched"
+                              class="myAlerts">
+                          Su Apellido es Obligatorio
+                        </div>
+                        <div *ngIf="!!usrLastName.errors?.minlength"
+                              class="myAlerts">
+                          Mínimo {{ usrLastName?.errors.minlength.requiredLength }} caracteres
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <input
+                        type="email"
+                        class="form-control mb-3"
+                        placeholder="Email"
+                        name="usr_email"
+                        [(ngModel)]="email"
+                        required
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                        #usrEmail="ngModel"
+                        />
+                        <div *ngIf="!!usrEmail.errors?.required && usrEmail.touched"
+                              class="myAlerts">
+                          Su Correo es Obligatorio
+                        </div>
+                        <div *ngIf="!!usrEmail.errors?.pattern"
+                              class="myAlerts">
+                          Formato de correo inválido
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <p class="card-text mb-3 col-md-4">
+                            Birthday
+                          </p>
+                      <input 
+                        type="date" 
+                        id="usr_birthday" 
+                        class="form-control mb-3 col-md-8" 
+                        data-toggle="tooltip"
+                        data-trigger="hover" 
+                        data-placement="top" 
+                        data-title="Birthday"
+                        name="usr_birthday"
+                        [(ngModel)]="birthday"
+                        required
+                        #birthdayValidator="ngModel"
+                        />
+                      <div *ngIf="!!birthdayValidator.errors?.required && birthdayValidator.touched"
+                            class="myAlerts">
+                        Su Fecha de Nacimiento es obligatoria.
+                      </div>
+                  </div>
+
+                    <div class="row">
+                        <input
+                        type="password"
+                        class="form-control mb-3"
+                        placeholder="Password"
+                        name="usr_password1"
+                        minlength="6"
+                        [(ngModel)]="password"
+                        required
+                        #usrPass1="ngModel"
+                      />
+                      <div *ngIf="!!usrPass1.errors?.required && usrPass1.touched"
+                              class="myAlerts">
+                          Su Contraseña es Obligatoria
+                        </div>
+                        <div *ngIf="!!usrPass1.errors?.minlength"
+                              class="myAlerts">
+                          Mínimo {{ usrPass1?.errors.minlength.requiredLength }} caracteres
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <input
+                        type="password"
+                        class="form-control mb-3"
+                        placeholder="Confirm Password"
+                        name="usr_password2"
+                        minlength="6"
+                        [(ngModel)]="password2"
+                        required
+                        #usrPass2="ngModel"
+                      />
+                      <div *ngIf="!!usrPass2.errors?.required && usrPass2.touched"
+                              class="myAlerts">
+                          Su Contraseña es Obligatoria
+                        </div>
+                        <div *ngIf="!!usrPass2.errors?.minlength"
+                              class="myAlerts">
+                          Mínimo {{ usrPass2?.errors.minlength.requiredLength }} caracteres
+                        </div>
+
+                        <div *ngIf="usrPass1.value != usrPass2.value" class="myAlerts">
+                            Las contraseñas no coinciden entre sí.
+                          </div>
+                    </div>
+
+                    <div class="row">
+                        <div
+                        class="custom-control custom-checkbox custom-control-inline mb-3"
+                      >
+                        <input
+                          type="checkbox"
+                          id="customCheckboxInline1"
+                          name="termsConditions"
+                          class="custom-control-input"
+                          checked
+                          [(ngModel)]="terms"
+                          required
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="customCheckboxInline1"
+                        >
+                          I accept the terms & conditions.
+                        </label>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="fg-actions d-flex justify-content-between">
+                      <div class="login-btn">
+                        <button class="btn btn-outline-primary">
+                          <a
+                            href="login-page.html"
+                            class="text-decoration-none"
+                            [routerLink]="['/pages/login']"
+                          >
+                            Back To Login
+                          </a>
+                        </button>
+                      </div>
+                      <div class="recover-pass">
+                        <button type="submit" [disabled]="!forma.valid" class="btn btn-primary">
+                          <a class="text-decoration-none text-white">
+                            Register
+                          </a>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Registration Page Ends-->

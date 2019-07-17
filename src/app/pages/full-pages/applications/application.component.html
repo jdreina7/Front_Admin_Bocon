@@ -1,0 +1,17 @@
+<div class='row animated fadeIn'>
+  <div class='col-12'>
+    <div class='card'>
+      <div class="row load" *ngIf='!apply'>
+        <h1 class="spinner-grow text-primary"></h1>
+      </div>
+
+      <div class="row load" *ngIf='!apply'>
+        <h3>Cargando</h3>
+      </div>
+
+      <div class='card-body' *ngIf="apply" animated="fadeIn">
+        <h2> {{ apply.apply_amount }}</h2>
+      </div>
+    </div>
+  </div>
+</div>

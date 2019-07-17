@@ -1,0 +1,15 @@
+.profile-menu{
+    .active{
+        border-bottom: 2px solid;
+        margin-bottom: -2px;
+    }
+}
+
+#user-profile {
+    .width-100 {
+        width: 100px !important;
+        height: 100px !important;
+        background-size: contain;
+        background-position: center;
+    }
+}

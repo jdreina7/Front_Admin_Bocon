@@ -1,0 +1,49 @@
+// For Registration page
+
+#regestration {
+  // background-image: url("../../../../assets/img/gallery/light-bg.jpg");
+  // background-size: 100% 100%;
+  // background-repeat: no-repeat;
+ .overlayVideo {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 0.3;
+  }
+
+  .mb-3 {
+    margin-top: 1rem;
+    margin-bottom: 0 !important;
+  }
+
+  .myAlerts {
+    color: red;
+  }
+
+  .register-img {
+    background: #f0f0f0;
+    padding: 0;
+  }
+
+  #userRegistration .ng-invalid.ng-touched {
+    border: solid 1px red !important;
+  }
+
+  .login-btn {
+    .btn.btn-outline-primary {
+      &:hover {
+        a {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .recover-pass {
+    button.btn.btn-primary {
+      color: #fff !important;
+    }
+  }
+}

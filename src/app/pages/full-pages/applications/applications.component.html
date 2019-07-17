@@ -1,0 +1,95 @@
+<!--Shopping cart starts-->
+<section id="shopping-cart">
+  <div class="row text-left">
+    <div class="col-sm-12">
+      <div class="card">
+          <div class="card-header">
+              <div class="row">
+                <div class="col-md-6">
+                  <h2 class="text-left">Applications <small>( Total )</small></h2>
+                </div>
+                <div class="col-md-6">
+                  <input #input (keyup)="searchApply(input.value)" type="text" class="form-control searchInput" id="search_apply"
+                    name="search_apply" placeholder="Buscar solicitud">
+                </div>
+              </div>
+            </div>
+
+            <div class="row load" *ngIf='cargando'>
+                <h1 class="spinner-grow text-primary"></h1>
+                <br>
+                <h3>Cargando</h3>
+            </div>
+            
+              <div class="row load" *ngIf='busqueda === false'>
+                <h3 class="searchInput">No hay resultados para esta busqueda</h3>
+              </div>
+
+        <div class="card-content">
+          <div class="card-body">
+            <table class="table table-responsive-md text-center" *ngIf="aplicaciones.length !== 0">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Prod/Serv</th>
+                  <th>Owner</th>
+                  <th>Sale Price</th>
+                  <th>Coupons Quantity</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of aplicaciones">
+                  <td>
+                    <!-- <img class="media-object round-media" src="assets/img/elements/01.png"
+                    alt="Generic placeholder image" style="height: 75px;" /></td> -->
+                    <img class="media-object round-media" [src]="item.apply_item.input_imgs[0] | image:'inputs'"
+                    alt="Generic placeholder image" style="height: 75px;" /></td>
+                  <td>{{ item.apply_item.input_name }}</td>
+                  <td>{{ item.apply_created_by.usr_email }}</td>
+                  <td>${{ item.apply_amount }}</td>
+                  <td>{{ item.apply_total }}</td>
+                  <!-- <td>
+                    <a class="info actions" data-original-title="" title="" (click)="openLg(content)">
+                      <i class="ft-info font-medium-3"></i> Details
+                    </a>
+                    <a class="success actions" data-original-title="" title="">
+                      <i class="ft-check font-medium-3"></i> Aprobe
+                    </a>
+                    <a class="danger actions" data-original-title="" title="">
+                      <i class="ft-trash font-medium-3"></i> Reject
+                    </a>
+                  </td> -->
+                  <td><button class="btn gradient-ibiza-sunset actions" [routerLink]="['/pages/application', item._id]">
+                      <i class="icon-wrench"></i> Manage Apply
+                  </button>
+                  </td>
+                  
+                </tr>
+              </tbody>
+            </table>
+            <div class="row" *ngIf="aplicaciones.length === 0 || busqueda === false && termino.length <= 0">
+              <h3 class="emptyMessage"> <i class="fa fa-check"></i> Estás al día con las solicitudes, bien hecho!</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Modal title</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>One fine body&hellip;</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>
+</section>
+<!--Shopping cart ends-->
