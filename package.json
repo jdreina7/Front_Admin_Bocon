@@ -47,7 +47,7 @@
     "gulp": "4.0.0",
     "hopscotch": "0.3.1",
     "intl": "1.2.5",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "ng-chartist": "1.1.1",
     "ng2-charts": "1.6.0",
     "ng2-completer": "2.0.8",
